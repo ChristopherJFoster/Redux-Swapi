@@ -7,11 +7,8 @@ import { getSWChars } from '../actions';
 
 class CharacterListView extends React.Component {
   componentDidMount() {
-    console.log('CDM');
     // call our action
     this.props.getSWChars();
-    console.log('CDM: this.props.characters: ', this.props.characters);
-    console.log('CDM: this.props.fetching: ', this.props.fetching);
   }
 
   render() {
@@ -21,8 +18,6 @@ class CharacterListView extends React.Component {
         <h3>"That's no moon. It's a...loading screen." - Obi-Wan Kenobi</h3>
       );
     }
-    console.log('render: this.props.characters: ', this.props.characters);
-    console.log('render: this.props.fetching: ', this.props.fetching);
     return (
       <div className='CharactersList_wrapper'>
         <CharacterList
