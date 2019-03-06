@@ -13,10 +13,9 @@ export const FETCH_SWCHARS_FAIL = 'FETCH_SWCHARS_FAIL';
 
 export const getSWChars = () => {
   dispatch({ type: FETCH_SWCHARS_START });
-  axios
-    .get('https://swapi.co/api/people/')
-    .then(res =>
-      dispatch({ type: FETCH_SWCHARS_SUCCESS, payload: res.data.results })
-    )
-    .catch(res => dispatch({ type: FETCH_SWCHARS_FAIL, payload: err }));
+  axios.get('https://swapi.co/api/people/').then(console.log(res));
+  // .then(res =>
+  //   dispatch({ type: FETCH_SWCHARS_SUCCESS, payload: res.data.results })
+  // )
+  // .catch(res => dispatch({ type: FETCH_SWCHARS_FAIL, payload: err }));
 };
