@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // we'll need to create 3 different action types here.
 // one for fetching, one for success and one for failure
-export const FETCH_SWCHARS_START = 'FETCH_SWCHARS_START';
+export const FETCH_SWCHARS_FETCHING = 'FETCH_SWCHARS_FETCHING';
 export const FETCH_SWCHARS_SUCCESS = 'FETCH_SWCHARS_SUCCESS';
 export const FETCH_SWCHARS_FAILURE = 'FETCH_SWCHARS_FAILURE';
 
@@ -12,7 +12,7 @@ export const FETCH_SWCHARS_FAILURE = 'FETCH_SWCHARS_FAILURE';
 // remember that now we have control over our thunk-based action creator
 
 export const getSWChars = () => dispatch => {
-  dispatch({ type: FETCH_SWCHARS_START });
+  dispatch({ type: FETCH_SWCHARS_FETCHING });
   axios
     .get('https://swapi.co/api/people/')
     .then(res =>
