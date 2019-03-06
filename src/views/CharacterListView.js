@@ -6,23 +6,29 @@ import { CharacterList } from '../components';
 import { getSWChars } from '../actions';
 
 class CharacterListView extends React.Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     // call our action
-    getSWChars();
+    this.props.getSWChars();
+    console.log('CDM');
+    console.log('this.props.characters: ', this.props.characters);
+    console.log('this.props.fetching: ', this.props.fetching);
   }
 
   render() {
     if (this.props.fetching) {
       // return something here to indicate that you are fetching data
-      <h3>"That's no moon. It's a...loading screen." - Obi-Wan Kenobi</h3>;
+      return (
+        <h3>"That's no moon. It's a...loading screen." - Obi-Wan Kenobi</h3>
+      );
     }
+    console.log('this.props.characters: ', this.props.characters);
+    console.log('this.props.fetching: ', this.props.fetching);
     return (
       <div className='CharactersList_wrapper'>
-        <CharacterList characters={this.props.characters} />
+        <CharacterList
+          characters={this.props.characters}
+          error={this.props.error}
+        />
       </div>
     );
   }
@@ -30,10 +36,13 @@ class CharacterListView extends React.Component {
 
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
-const mapStateToProps = state => ({
-  characters: state.characters,
-  fetching: state.fetching
-});
+const mapStateToProps = state => {
+  return {
+    characters: state.characters,
+    fetching: state.fetching,
+    error: state.error
+  };
+};
 
 export default connect(
   mapStateToProps /* mapStateToProps replaces null here */,
